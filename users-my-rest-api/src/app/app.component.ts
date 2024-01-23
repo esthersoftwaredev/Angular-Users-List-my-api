@@ -7,6 +7,7 @@ import { User } from "./models/user";
 
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
+import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule } from "@angular/material/icon";
 
@@ -18,6 +19,7 @@ import { MatIconModule } from "@angular/material/icon";
 		RouterOutlet,
 		MatToolbarModule,
 		MatCardModule,
+    MatButtonToggleModule,
     MatButtonModule,
 		MatIconModule,
 	],
@@ -29,9 +31,31 @@ export class AppComponent implements OnInit {
 	apiService = inject(ApiService);
 	users: User[] = [];
 
+  showActiveUsers: boolean = false;
+  showInactiveUsers: boolean = false;
+  showAllUsers: boolean = true;
+
 	ngOnInit(): void {
 		this.apiService.getUsers().subscribe((data) => {
 			this.users = data;
 		});
 	}
+
+  showActive() {
+    this.showActiveUsers = true;
+    this.showInactiveUsers = false;
+    this.showAllUsers = false;
+  }
+
+  showInactive() {
+    this.showActiveUsers = false;
+    this.showInactiveUsers = true;
+    this.showAllUsers = false;
+  }
+
+  showAll() {
+    this.showActiveUsers = false;
+    this.showInactiveUsers = false;
+    this.showAllUsers = true;
+  }
 }

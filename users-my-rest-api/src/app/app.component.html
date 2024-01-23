@@ -1,15 +1,28 @@
 <mat-toolbar class="header">
-  <span>My App</span>
+  <div class="site-info">
+    <h1> FAKE Users</h1>
+    <p>from my REST API</p>
+  </div>
   <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
     <mat-icon>share</mat-icon>
   </button>
 </mat-toolbar>
 
+<div class="filter">
+  <mat-button-toggle-group name="status" aria-label="status">
+    <mat-button-toggle (click)="showActive()">ACTIVE</mat-button-toggle>
+    <mat-button-toggle (click)="showInactive()">INACTIVE</mat-button-toggle>
+    <mat-button-toggle (click)="showAll()">ALL</mat-button-toggle>
+  </mat-button-toggle-group>
+</div>
+
+@if (this.showAllUsers) {
 <div class="cards-wrapper">
   @for (user of users; track user.id) {
   <mat-card>
     <h2>{{user.name}}</h2>
-    <div class="main-details">
+    <p>{{user.email}}</p>
+    <div class="image-wrapper">
       <img src="{{user.imgSrc}}" alt="user image">
       <div class="status">
         @if (user.active) {
@@ -21,8 +34,56 @@
     </div>
     <div class="details">
       <h3>{{user.occupation}}</h3>
-      <p>{{user.email}}</p>
     </div>
   </mat-card>
   }
 </div>
+}
+
+@if (this.showActiveUsers) {
+<div class="cards-wrapper">
+  @for (user of users; track user.id) {
+  @if (user.active) {
+  <mat-card>
+    <h2>{{user.name}}</h2>
+    <p>{{user.email}}</p>
+    <div class="image-wrapper">
+      <img src="{{user.imgSrc}}" alt="user image">
+      <div class="status">
+        <mat-icon class="active">done</mat-icon>
+      </div>
+    </div>
+    <div class="details">
+      <h3>{{user.occupation}}</h3>
+    </div>
+  </mat-card>
+  }
+  }
+</div>
+}
+
+@if (this.showInactiveUsers) {
+  <div class="cards-wrapper">
+    @for (user of users; track user.id) {
+    @if (!user.active) {
+    <mat-card>
+      <h2>{{user.name}}</h2>
+      <p>{{user.email}}</p>
+      <div class="image-wrapper">
+        <img src="{{user.imgSrc}}" alt="user image">
+        <div class="status">
+          <mat-icon class="inactive">close</mat-icon>
+        </div>
+      </div>
+      <div class="details">
+        <h3>{{user.occupation}}</h3>
+      </div>
+    </mat-card>
+    }
+    }
+  </div>
+}
+
+<mat-toolbar class="footer">
+  <p>site by <a href="https://monacodelisa.com" target="_blank" rel="noopener noreferrer">Ester White</a> </p>
+</mat-toolbar>

@@ -1,7 +1,33 @@
 .header {
   background-color: #3e64cb;
   color: #fff;
+  align-items: center;
   justify-content: space-between;
+  padding: 2rem;
+  height: 4.5rem;
+
+  .site-info {
+    h1 {
+      line-height: 1.3rem;
+      margin: 0;
+    }
+
+    p {
+      font-size: 1rem;
+      margin: 0;
+    }
+  }
+}
+
+.filter {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  mat-button-toggle-group {
+    margin: 2rem 0 0;
+    box-shadow: 0 0 3px 1px #43434325;
+  }
 }
 
 .cards-wrapper {
@@ -10,7 +36,6 @@
   justify-content: center;
   align-items: center;
   width: 90vw;
-  padding-bottom: 4rem;
   margin: 2rem auto 4rem;
 
   mat-card {
@@ -19,20 +44,25 @@
     padding: 1.5rem;
     margin: 1rem;
 
-    img {
-      width: 10vw;
-      margin: 0 auto 1rem;
-      border-radius: 50%;
+    h2 {
+      margin: 0;
     }
 
-    .main-details {
+    .image-wrapper {
       display: flex;
       position: relative;
+
+      img {
+        width: 10vw;
+        margin: 0.5rem auto 1.5rem;
+        border-radius: 50%;
+      }
 
       .status {
         position: absolute;
         right: 15%;
         bottom: 5%;
+
         mat-icon {
           color: #fff;
           border-radius: 50%;
@@ -52,9 +82,22 @@
     .details {
       h3 {
         text-transform: uppercase;
+        min-height: 3rem;
         margin: 0;
       }
     }
 
+  }
+}
+
+.footer {
+  justify-content: center;
+  p {
+    font-size: 0.8rem;
+    margin: 0;
+
+    a {
+      text-decoration: none;
+    }
   }
 }
