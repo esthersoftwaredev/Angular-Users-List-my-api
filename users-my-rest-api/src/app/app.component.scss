@@ -1,3 +1,9 @@
+.header {
+  background-color: #3e64cb;
+  color: #fff;
+  justify-content: space-between;
+}
+
 .cards-wrapper {
   display: flex;
   flex-wrap: wrap;
@@ -8,8 +14,8 @@
   margin: 2rem auto 4rem;
 
   mat-card {
-    background-color: antiquewhite;
-    width: 20vw;
+    background-color: #cfeafb;
+    width: 15vw;
     padding: 1.5rem;
     margin: 1rem;
 
@@ -18,5 +24,37 @@
       margin: 0 auto 1rem;
       border-radius: 50%;
     }
+
+    .main-details {
+      display: flex;
+      position: relative;
+
+      .status {
+        position: absolute;
+        right: 15%;
+        bottom: 5%;
+        mat-icon {
+          color: #fff;
+          border-radius: 50%;
+          padding: 0.2rem;
+
+          &.active {
+            background-color: green;
+          }
+
+          &.inactive {
+            background-color: red;
+          }
+        }
+      }
+    }
+
+    .details {
+      h3 {
+        text-transform: uppercase;
+        margin: 0;
+      }
+    }
+
   }
 }

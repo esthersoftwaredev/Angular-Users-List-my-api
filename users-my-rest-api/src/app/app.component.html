@@ -1,11 +1,28 @@
+<mat-toolbar class="header">
+  <span>My App</span>
+  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+    <mat-icon>share</mat-icon>
+  </button>
+</mat-toolbar>
+
 <div class="cards-wrapper">
   @for (user of users; track user.id) {
   <mat-card>
     <h2>{{user.name}}</h2>
-    <img src="{{user.imgSrc}}" alt="user image">
-    <p>{{user.email}}</p>
-    <p>{{user.occupation}}</p>
-    <p>{{user.active}}</p>
+    <div class="main-details">
+      <img src="{{user.imgSrc}}" alt="user image">
+      <div class="status">
+        @if (user.active) {
+        <mat-icon class="active">done</mat-icon>
+        } @else {
+        <mat-icon class="inactive">close</mat-icon>
+        }
+      </div>
+    </div>
+    <div class="details">
+      <h3>{{user.occupation}}</h3>
+      <p>{{user.email}}</p>
+    </div>
   </mat-card>
   }
 </div>
