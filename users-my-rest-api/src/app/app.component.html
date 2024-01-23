@@ -2,9 +2,10 @@
   @for (user of users; track user.id) {
   <mat-card>
     <h2>{{user.name}}</h2>
-    <img src="https://thispersondoesnotexist.com/" alt="user image">
+    <img src="{{user.imgSrc}}" alt="user image">
     <p>{{user.email}}</p>
     <p>{{user.occupation}}</p>
+    <p>{{user.active}}</p>
   </mat-card>
   }
 </div>

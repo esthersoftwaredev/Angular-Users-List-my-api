@@ -3,5 +3,6 @@ export interface User {
   name: string;
   email: string;
   occupation: string;
-  active?: boolean;
+  imgSrc: string;
+  active: boolean;
 }
