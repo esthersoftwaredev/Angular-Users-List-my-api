@@ -1,3 +1,10 @@
-<mat-card>
-  <p>Hello!</p>
-</mat-card>
+<div class="cards-wrapper">
+  @for (user of users; track user.id) {
+  <mat-card>
+    <h2>{{user.name}}</h2>
+    <img src="https://thispersondoesnotexist.com/" alt="user image">
+    <p>{{user.email}}</p>
+    <p>{{user.occupation}}</p>
+  </mat-card>
+  }
+</div>

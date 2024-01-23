@@ -1,0 +1,22 @@
+.cards-wrapper {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  width: 90vw;
+  padding-bottom: 4rem;
+  margin: 2rem auto 4rem;
+
+  mat-card {
+    background-color: antiquewhite;
+    width: 20vw;
+    padding: 1.5rem;
+    margin: 1rem;
+
+    img {
+      width: 10vw;
+      margin: 0 auto 1rem;
+      border-radius: 50%;
+    }
+  }
+}
