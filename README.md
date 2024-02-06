@@ -1,6 +1,4 @@
-# users-my-rest-api-frontend
-
-# Users My Rest Api
+# Angular Frontend to display the Users List from my NodeJS REST API `users` endpoint
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 17.0.8.
 
