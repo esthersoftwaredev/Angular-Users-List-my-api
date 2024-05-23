@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "users-my-rest-api": {
+    "angular-users-my-api": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -63,10 +63,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "users-my-rest-api:build:production"
+              "buildTarget": "angular-users-my-api:build:production"
             },
             "development": {
-              "buildTarget": "users-my-rest-api:build:development"
+              "buildTarget": "angular-users-my-api:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -74,7 +74,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "buildTarget": "users-my-rest-api:build"
+            "buildTarget": "angular-users-my-api:build"
           }
         },
         "test": {

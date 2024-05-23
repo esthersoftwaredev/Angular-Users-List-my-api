@@ -1,5 +1,5 @@
 [build]
-  base = "users-my-rest-api"
+  base = ""
   command = "npm run build:prod"
   publish = "dist/browser"
 

@@ -27,7 +27,7 @@ import { MatIconModule } from "@angular/material/icon";
 	styleUrl: "./app.component.scss",
 })
 export class AppComponent implements OnInit {
-	title = "users-my-rest-api";
+	title = "angular-users-my-api";
 	apiService = inject(ApiService);
 	users: User[] = [];
 
