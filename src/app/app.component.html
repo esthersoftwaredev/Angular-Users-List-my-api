@@ -9,7 +9,11 @@
   <mat-menu #menu="matMenu">
     <button mat-menu-item (click)="shareOnLinkedIn()"><mat-icon svgIcon="linkedin"></mat-icon>Linkedin</button>
     <button mat-menu-item (click)="shareOnX()"><mat-icon svgIcon="x"></mat-icon>Xitter</button>
-    <button mat-menu-item (click)="copyLink()"><mat-icon>content_copy</mat-icon>Copy Link</button>
+    @if (linkCopied) {
+      <button mat-menu-item (click)="copyLink()"><mat-icon>checkmark_outlined</mat-icon>Link Copied</button>
+    } @else {
+      <button mat-menu-item (click)="copyLink()"><mat-icon>content_copy</mat-icon>Copy Link</button>
+    }
   </mat-menu>
 </mat-toolbar>
 
