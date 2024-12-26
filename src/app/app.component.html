@@ -3,9 +3,14 @@
     <h1> FAKE Users</h1>
     <p>from my REST API</p>
   </div>
-  <button mat-icon-button class="example-icon" aria-label="Example icon-button with share icon">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="menu">
     <mat-icon>share</mat-icon>
   </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item (click)="shareOnLinkedIn()"><mat-icon svgIcon="linkedin"></mat-icon>Linkedin</button>
+    <button mat-menu-item (click)="shareOnX()"><mat-icon svgIcon="x"></mat-icon>Xitter</button>
+    <button mat-menu-item (click)="copyLink()"><mat-icon>content_copy</mat-icon>Copy Link</button>
+  </mat-menu>
 </mat-toolbar>
 
 <div class="filter">
@@ -85,5 +90,5 @@
 }
 
 <mat-toolbar class="footer">
-  <p>developed by <a href="https://monacodelisa.com" target="_blank" rel="noopener noreferrer">Esther White</a> </p>
+  <p>developed by <a href="https://esthersoftware.dev" target="_blank" rel="noopener">Esther White</a> </p>
 </mat-toolbar>

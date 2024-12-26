@@ -1,24 +1,26 @@
 import { Component, OnInit, inject } from "@angular/core";
 import { CommonModule } from "@angular/common";
-import { RouterOutlet } from "@angular/router";
 
 import { ApiService } from "./services/api.service";
 import { User } from "./models/user";
 
 import { MatToolbarModule } from "@angular/material/toolbar";
 import { MatCardModule } from "@angular/material/card";
+import {MatMenuModule} from '@angular/material/menu';
 import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
-import { MatIconModule } from "@angular/material/icon";
+import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
+import { DomSanitizer } from "@angular/platform-browser";
+import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-root",
 	standalone: true,
 	imports: [
 		CommonModule,
-		RouterOutlet,
 		MatToolbarModule,
 		MatCardModule,
+    MatMenuModule,
     MatButtonToggleModule,
     MatButtonModule,
 		MatIconModule,
@@ -34,6 +36,21 @@ export class AppComponent implements OnInit {
   showActiveUsers: boolean = false;
   showInactiveUsers: boolean = false;
   showAllUsers: boolean = true;
+  sanitizer = inject(DomSanitizer);
+  matIconRegistry = inject(MatIconRegistry);
+  router = inject(Router);
+  currentUrl = this.router.url;
+
+  constructor() {
+    this.matIconRegistry.addSvgIcon(
+      "linkedin",
+      this.sanitizer.bypassSecurityTrustResourceUrl("../assets/icons/linkedin.svg")
+    );
+    this.matIconRegistry.addSvgIcon(
+      "x",
+      this.sanitizer.bypassSecurityTrustResourceUrl("../assets/icons/x.svg")
+    );
+  }
 
 	ngOnInit(): void {
 		this.apiService.getUsers().subscribe((data) => {
@@ -57,5 +74,23 @@ export class AppComponent implements OnInit {
     this.showActiveUsers = false;
     this.showInactiveUsers = false;
     this.showAllUsers = true;
+  }
+
+  shareOnLinkedIn() {
+    const linkedInShareUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(this.currentUrl)}`;
+    window.open(linkedInShareUrl, '_blank');
+  }
+
+  shareOnX() {
+    const xShareUrl = `https://twitter.com/intent/tweet?url=${encodeURIComponent(this.currentUrl)}`;
+    window.open(xShareUrl, '_blank');
+  }
+
+  copyLink() {
+    navigator.clipboard.writeText(this.currentUrl).then(() => {
+      alert('Link copied to clipboard!');
+    }, () => {
+      alert('Failed to copy the link.');
+    });
   }
 }
