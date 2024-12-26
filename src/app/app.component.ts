@@ -11,7 +11,6 @@ import {MatButtonToggleModule} from '@angular/material/button-toggle';
 import {MatButtonModule} from '@angular/material/button';
 import { MatIconModule, MatIconRegistry } from "@angular/material/icon";
 import { DomSanitizer } from "@angular/platform-browser";
-import { Router } from "@angular/router";
 
 @Component({
 	selector: "app-root",
@@ -38,8 +37,7 @@ export class AppComponent implements OnInit {
   showAllUsers: boolean = true;
   sanitizer = inject(DomSanitizer);
   matIconRegistry = inject(MatIconRegistry);
-  router = inject(Router);
-  currentUrl = this.router.url;
+  currentUrl = window.location.href;
 
   constructor() {
     this.matIconRegistry.addSvgIcon(
